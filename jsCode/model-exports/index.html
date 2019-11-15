@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="format-detection" content="telephone=no,email=no">
+  <title>model&exports</title>
+</head>
+<body>
+<script>
+  /*exports 是一个对象，用来向外提供模块接口。*/
+
+  define(function(require, exports) {
+
+    // 对外提供 foo 属性
+    exports.foo = 'bar';
+
+    // 对外提供 doSomething 方法
+    exports.doSomething = function() {};
+
+  });
+
+
+
+
+  /*module.exports Object*/ 
+ /* 当前模块对外提供的接口。*/
+
+/*传给 factory 构造方法的 exports 参数是 module.exports 对象的一个引用。只通过 exports 参数来提供接口，有时无法满足开发者的所有需求。 比如当模块的接口是某个类的实例时，需要通过 module.exports 来实现：*/
+  /*对 module.exports 的赋值需要同步执行，不能放在回调函数里*/
+
+define(function(require, exports, module) {
+
+  // exports 是 module.exports 的一个引用
+  console.log(module.exports === exports); // true
+
+  // 重新给 module.exports 赋值
+  module.exports = new SomeClass();
+
+  // exports 不再等于 module.exports
+  console.log(module.exports === exports); // false
+
+});
+
+
+  /*注意：require 是同步往下执行，require.async 则是异步回调执行。require.async 一般用来加载可延迟异步加载的模块。*/
+
+  define(function(require, exports, module) {
+
+    // 异步加载一个模块，在加载完成时，执行回调
+    require.async('./b', function(b) {
+      b.doSomething();
+    });
+    
+    // 异步加载多个模块，在加载完成时，执行回调
+    require.async(['./c', './d'], function(c, d) {
+      c.doSomething();
+      d.doSomething();
+    });
+    
+  });
+</script>
+</body>
+</html>

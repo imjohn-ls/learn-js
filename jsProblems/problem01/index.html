@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="format-detection" content="telephone=no,email=no">
+  <title>js</title>
+</head>
+<body>
+<script>
+  /*9*9乘法表-页面版*/
+
+  /*for(var i=1;i<=9;i++){
+      for(var j=1;j<=i;j++){
+          console.log(i);
+          console.log(j);
+          var c =i*j;
+          document.write(j+'*'+i+'='+c+';');
+      }
+      document.write('</br>');
+  }*/
+
+  /*9*9乘法表-控制台版*/
+  /*for(var i=1;i<=9;i++){
+      var str='';
+      for(var j=1;j<=i;j++){
+          str += j+'*'+i+'='+i*j+';'+' ';
+      }
+      console.log(str);
+      console.log('\n');
+  }*/
+
+  /*金字塔*/
+
+  /*
+  function cc(n){
+      for(var i=1;i<=n;i++){
+          var str='';
+          for(var k=n-i;k>=0;k--){
+              str +=' ';
+          }
+          for(var j=1;j<=2*i-1;j++){
+              str += '*';
+          }
+          console.log(str);
+          console.log('\n');
+      }
+  }
+  cc(12);*/
+
+  /*function cc(arg1){
+    for(let i=1;i<arg1;i++){
+        console.log(i);
+    }
+    console.log(i);
+}
+cc(6);*/
+
+  /*加法*/
+  /*function add(arg1,arg2){
+      arg1 =typeof arg1 ==='number'?arg1:0;
+      arg2 =typeof arg2 ==='number'?arg2:0;
+          return arg1+arg2;
+  }
+  console.log(add('hhh','gg'));*/
+
+  /*数据类型*/
+  /*function cc( arg1) {
+      arg1=[1,2,3];
+      /!*if(arg1!=''&&arg1!='null'&&arg1!='undefine'){*!/
+          return typeof  arg1;
+      /!*}*!/
+  }
+  console.log(cc());*/
+
+  /*
+var a =3;
+debugger
+try{
+	    console.log('666');
+}catch (e){
+	console.log('22');
+}
+*/
+
+  /*选择器*/
+  /*function _(doc){
+      if(doc){
+          return document.querySelector(doc);
+      }else {
+          console.log('未知错误！');
+      }
+  }*/
+
+  /*三目运算符*/
+
+  /*function sm(i,k,l){
+      var a,b,c;
+      /!*不传值k=i i没传值默认是6 b是6*!/
+      var b =k?l?l:9:i?i:6;
+
+      console.log(b);
+      /!*var c =l?l:9;
+      console.log(c);
+      var a =i>0?b:c;
+      console.log(a);*!/
+  }
+  sm();*/
+
+  /*function sc(arr,i){
+      var len =arr.length;
+      var i =i?i<0?Math.max(0,len):i:0;
+      console.log(i);
+  }
+  sc([1,2,3],-6);*/
+
+  /*
+
+  var a= [1,2,3];
+  var b =a.map(function(item,index){
+      return item*index;
+  });
+  console.log(b);*/
+
+  /*随机数*/
+  /*
+  function mat(){
+      var a =parseInt(Math.random()*10+1);
+      console.log(a);
+  }
+  mat();
+  */
+
+  /*each forEach map*/
+  /*map返回新对象不改变原对象*/
+  /*
+  var a =[1,2,3];
+  var b =a.forEach(function (item,i) {
+      item+1;
+  });
+  console.log(a);
+  console.log(b);*/
+
+  /*var a=[1,2,3];
+var b =$("ul.bd > li");
+/!*each对象*!/
+b.each(function(i,item){
+    console.log(i);
+    console.log(item);
+});*/
+  /*
+  b.map(function(i,index){
+      console.log(i);
+      console.log(index);
+  });*/
+
+  /*foreach 遍历数组对象*/
+  /*
+  a.forEach(function(i,index,item){
+      console.log(i);/!*对象下标*!/
+      console.log(index);/!*对应内容*!/
+      console.log(item);/!*本身*!/
+  });*/
+</script>
+</body>
+</html>

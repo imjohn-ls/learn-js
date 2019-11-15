@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="format-detection" content="telephone=no,email=no">
+    <title>Title</title>
+</head>
+<body>
+<canvas class="pie-chart" width="850" hight="500"></canvas>
+<script>
+    let PieChart =function(selector,options){
+        let canvas ='string' === typeof selector ? document.querySelector(selector) : null;
+        if(canvas === null){
+            return false;
+        }
+        let  defaultOptions={
+        	radius:200,
+            legendParms:{
+        		font:'24px Arial',
+                x:30,
+                y:30,
+                margin:50,
+                width:50,
+                height:24
+            }
+        }
+        this.context = canvas.getContext('2d');
+        this.width =canvas.getAttribute('width') || 300;
+        this.height =canvas.getAttribute('height') || 300;
+        this.options = Object.assign(defaultOptions,options);
+
+    }
+    PieChart.prototype.load=function(data){
+        data.forEach(item => this.count ? this.count += item.value : this.count = item.value);
+
+        this.data =data;
+        return this; //实现链式调用
+    }
+
+
+    PieChart.prototype.render=function(){
+        let _generateLegend =(item,index) => {
+        	this.context.fillRect(
+        		this.options.legendParms.x,
+                this.options.legendParms.y,
+                this.legendParms.width,
+                this.legendParms.height
+            );
+        	this.context.font =this.legendParms.font;
+        	this.context.fillText(
+        		item.title,
+                this.options.legendParms.y+this.options.legendParms.margin,
+                (index+1)*this.options.legendParms.margin
+            );
+
+        }
+        let temparc =0;
+            this.data.forEach((item,index)=>{
+            	item.color ='#f00';
+
+            this.context.beginPath();
+            this.context.moveTo(this.width/2,this.height/2);
+            let startarc =temparc,endarc =startarc +(item.value / this.count)*Math.PI*2;
+            this.context.arc(
+            	this.width/2,
+                this.height/2,
+                this.options.radius,
+                startarc,
+                endarc,
+                false
+            );
+            this.context.closePath();
+            this.context.fillStyle = item.color;
+            this.context.fill();
+            temparc = endarc;
+            if(this.options.legend){
+                _generateLegend(item,index);
+            }
+        });
+            return this;
+    }
+
+
+const data =[
+    {title:"001",value:1024},
+    {title:"001",value:1024},
+    {title:"001",value:1024},
+    {title:"001",value:1024},
+];
+    let pie = new PieChart(".pie-chart",{legend:true});
+    pie.load(data).render();
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

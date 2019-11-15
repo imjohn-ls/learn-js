@@ -26,7 +26,7 @@ for (let v of originalArray) {
 console.log('result3:' + result3);
 
 /*方案4*/
-let lg = originalArray.length;
+/*let lg = originalArray.length;
 for (let i = 0; i < lg; i++) {
   for (let j = i + 1; j < lg; j++) {
     if (originalArray[i] === originalArray[j]) {
@@ -34,7 +34,16 @@ for (let i = 0; i < lg; i++) {
       j--;
     }
   }
+}*/
+
+/*一维数组去重排序*/
+/*var arr =[1,2,2,3,8,3];
+var arr2 =[[1,2,2],[1,3,3],[2,2,5],[1,2,2]];
+
+function st(arg1){
+    return Array.from(new Set(arg1)).sort();
 }
+console.log(st(arr));*/
 
 
 /*对象去重*/
@@ -50,5 +59,46 @@ const result4 = resposeList.reduce((acc, cur) => {
   return ids.includes(cur.id) ? acc : [...acc, cur];
 }, []);
 console.log('result4:' + result4);
+
+
+/*集合的作用*/
+var obj =[
+  {
+    'id':1,
+    'name':'john1'
+  },
+  {
+    'id':2,
+    'name':'john2'
+  },
+  {
+    'id':2,
+    'name':'john2'
+  },
+  {
+    'id':3,
+    'name':'john3'
+  },
+  {
+    'id':4,
+    'name':'john4'
+  },
+  {
+    'id':4,
+    'name':'john4'
+  },
+  {
+    'name':'john5'
+  },
+
+];
+var set = new Set();
+obj.map(function(item){
+  if(!set.has(item.id)){
+    set.add(item.id);
+  }
+  
+});
+console.log('obj:'+obj);
 
 

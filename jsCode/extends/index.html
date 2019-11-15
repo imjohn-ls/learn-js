@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="format-detection" content="telephone=no,email=no">
+  <title>Title</title>
+</head>
+<body>
+<script>
+  //如果声明一个一个类的时候没有声明构造函数，那么会默认添加一个空的构造函数，构造函数在new实例化一个对象的时候会被调用
+
+ /* class Person {
+    constructor(name){
+      console.log(`构造函数执行了,${name}`)
+    }
+  }
+  let p1= new Person('jona')*/
+
+  class Person {
+    constructor(name){
+      console.log(`构造函数执行了,${name}`)
+      this.name=name
+    }
+    showName(){
+      return `名字为,${this.name}`
+    }
+  }
+  let p1= new Person('jona2')
+
+  console.log(p1.showName)
+
+</script> 
+</body>
+</html>

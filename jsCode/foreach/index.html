@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="format-detection" content="telephone=no,email=no">
+  <title>foreach</title>
+</head>
+<body>
+<script>
+  /*forEach() 方法对数组的每个元素执行一次提供的函数。总是返回undefined；*/
+  const array1 = ['a', 'b', 'c'];
+  array1.forEach(element => console.log(element));
+
+  // expected output: "a"
+  // expected output: "b"
+  // expected output: "c"
+
+  const obj=[
+    {
+      id:1,
+      name:'john'
+    },
+    {
+      id:2,
+      name:'hello'
+    }
+  ]
+  //obj.forEach(x=>console.log(x));
+  console.log(obj);
+</script>
+</body>
+</html>

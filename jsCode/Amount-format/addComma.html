@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="format-detection" content="telephone=no,email=no">
+    <title>金额格式化</title>
+</head>
+<body>
+<script>
+	function isFloat(s) {
+		var isFloat = RegExp(/^([0-9]+(\.+))[0-9]+$/);
+		return (isFloat.test(s));
+	}
+
+	function isMoney(s) {
+		var isMoney = RegExp(/^[0-9]{0,15}\.{0,1}[0-9]{0,2}$/);
+		return (isMoney.test(s));
+	}
+
+	function toCashWithComma(cash) {
+		while (cash.charAt(0) == '0') {
+			cash = cash.substr(1);
+		}
+		;
+		if (!isFloat(cash)) {
+			return addComma(cash);
+		}
+		;
+		var dotIndex = cash.indexOf('.');
+		var integerCash = cash.substring(0, dotIndex);
+		var decimalCash = cash.substring(dotIndex);
+		return addComma(integerCash) + decimalCash;
+	}
+
+	function toCashWithCommaAndDot(cash) {
+		if (cash == null || cash == 'null' || cash == '') {
+			return '';
+		}
+		var temp = toCashWithComma(cash);
+		if (temp.length == 0) {
+			return "0.00";
+		}
+		var dotPos = temp.indexOf(".");
+		if (dotPos < 0) {
+			return temp + '.00';
+		}
+		if (dotPos == 0) {
+			temp = '0' + temp;
+			dotPos = temp.indexOf(".");
+		}
+		if (dotPos == temp.length - 2) {
+			return temp + '0';0
+		}
+		if (dotPos == temp.length - 1) {
+			return temp + '00';
+		}
+		return temp;
+	}
+	function addComma(str) {
+		if (str.length > 3) {
+			var mod = str.length % 3;
+			var output = (mod > 0 ? (str.substring(0, mod)) : '');
+			for (var i = 0; i < Math.floor(str.length / 3); i++) {
+				if ((mod == 0) && (i == 0)) {
+					output += str.substring(mod + 3 * i, mod + 3 * i + 3);
+				} else {
+					output += ',' + str.substring(mod + 3 * i, mod + 3 * i + 3);
+				}
+			}
+			return (output);
+		} else {
+			return str;
+		}
+	}
+	
+	
+	var a ="1111111111.33";
+	console.log(toCashWithCommaAndDot(a));
+</script>
+</body>
+</html>
