@@ -9,4 +9,4 @@
 >Ctrl+shift+v 复制粘贴面板
 >Shift+f10 运行
 >Ctrl+j 代码块
->[图片](./img/php.jpg)
+>[图片](https://github.com/imjohn-ls/learn-js/blob/master/notes/phpstrom/img/php.jpg)
