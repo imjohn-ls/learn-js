@@ -21,7 +21,9 @@ _ _ _
 >在node执行一个文件时，会给这个文件内生成一个exports和module对象，而module又有一个exports属性
 `exports = module.exports = {};`
 >exports 仅仅是 module.exports 的一个引用。在 factory 内部给 exports 重新赋值时，并不会改变 module.exports 的值。因此给 exports 赋值是无效的，不能用来更改模块接口。只通过 exports 参数来提供接口，有时无法满足开发者的所有需求。 比如当模块的接口是某个类的实例时，需要通过 module.exports
+
 #vue生命周期
+***
 >beforecreate，创建，初始化实例    
   create：ajax请求，data数据方法，watch/event事件回调    
   beforeMOUNT:执行render    
