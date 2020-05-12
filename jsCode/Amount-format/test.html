@@ -58,6 +58,11 @@
 		var decimalCash = cash.substring(dotIndex);
 console.log(integerCash);
 console.log(decimalCash.substring(1,2));
+let val ='2222.333'
+
+val = val.replace(/[^\d.]/g, '').replace(/\.{2,}/g, '.').replace('.', '$#$').replace(/\./g, '').replace('$#$', '.').replace(/^(\-)*(\d+)\.(\d\d).*$/, '$1$2.$3').replace(/^\./g, '');
+console.log(val);
+
 
 
  </script>
