@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <title>www.jb51.net js动态添加事件</title>
+</head>
+<body>
+
+<div id="cc">
+  <div>112222</div>
+  <div>112222</div>
+  <div>112222</div>
+  <div>112222</div>
+  <div>112222</div>
+  <div>112222</div>
+</div>
+
+<button id="del">删除</button>
+
+
+ <ul id="out-ul">
+  <li class="out-li">123</li>
+  <li class="out-li">123</li>
+  <li class="out-li">123</li>
+ </ul>
+ <button id="btn">添加</button>
+ <script src="./jq.js"></script>
+ <script>
+  document.getElementById('btn').addEventListener('click',function(){
+    const ap ='5555';
+    let outUl =document.getElementById('out-ul');
+    let htmlFragment='<div><li>我是新增的li'+ap+'</li></div>';
+    let addLi=document.createElement('li');
+   addLi.innerHTML=htmlFragment;
+   outUl.appendChild(addLi);
+  },false);
+
+
+  $('#del').click(function(){
+    let a = $('#cc').children('div');
+    console.log(a);
+    
+    a.last().remove();
+  });
+
+  var cash = '222..3'
+  // console.log(cash.indexOf('.'));
+
+  // console.log(cash.match(/\d/g).join(''));
+  console.log(cash.charAt(0));
+  console.log(cash.substr(1));
+  
+  
+  
+  
+  var dotIndex = cash.indexOf('.');
+		var integerCash = cash.substring(0, dotIndex);
+		var decimalCash = cash.substring(dotIndex);
+console.log(integerCash);
+console.log(decimalCash.substring(1,2));
+let val ='2222.333'
+
+val = val.replace(/[^\d.]/g, '').replace(/\.{2,}/g, '.').replace('.', '$#$').replace(/\./g, '').replace('$#$', '.').replace(/^(\-)*(\d+)\.(\d\d).*$/, '$1$2.$3').replace(/^\./g, '');
+console.log(val);
+
+
+
+ </script>
+</body>
+</html>
