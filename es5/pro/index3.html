@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 组合继承
+        特点：组合继承，既能达到对父类属性的继承，也能继承父类原型上的方法，父类属性继承也不会在所有子类的实列上共享。
+唯一缺点，子类原型上有父类构造函数的属性，也就是多了一份属性
+        */
+       function Person(name, age) {
+            this.name = name
+            this.age = age 
+       }
+       Person.prototype.say = function() {
+           console.log('say');
+       }
+       function Child1(sex, name, age) {
+           Person.call(this, name, age)
+           this.sex = sex
+       }
+       Child1.prototype = new Person()
+
+       let p1 = new Child1('nan', 'john', '28')
+       console.log(p1);
+       p1.say()
+
+       function test () {
+           console.log('a');
+       }
+       let pp = new test()
+       console.log(new test());
+       console.log(pp._proto_ == test.constructor.prototype);
+    </script>
+</body>
+</html>

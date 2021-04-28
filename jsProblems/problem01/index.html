@@ -1,17 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-  <meta name="format-detection" content="telephone=no,email=no">
-  <title>js</title>
-</head>
-<body>
-<script>
-  /*9*9乘法表-页面版*/
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+    />
+    <meta name="format-detection" content="telephone=no,email=no" />
+    <title>js</title>
+  </head>
+  <body>
+    <script>
+      let a = { a: "3" };
+      let b = { b: "3" };
+      Object.assign(a, b);
+      console.log(a);
+      /*9*9乘法表-页面版*/
 
-  /*for(var i=1;i<=9;i++){
+      /*for(var i=1;i<=9;i++){
       for(var j=1;j<=i;j++){
           console.log(i);
           console.log(j);
@@ -21,8 +28,8 @@
       document.write('</br>');
   }*/
 
-  /*9*9乘法表-控制台版*/
-  /*for(var i=1;i<=9;i++){
+      /*9*9乘法表-控制台版*/
+      /*for(var i=1;i<=9;i++){
       var str='';
       for(var j=1;j<=i;j++){
           str += j+'*'+i+'='+i*j+';'+' ';
@@ -31,9 +38,9 @@
       console.log('\n');
   }*/
 
-  /*金字塔*/
+      /*金字塔*/
 
-  /*
+      /*
   function cc(n){
       for(var i=1;i<=n;i++){
           var str='';
@@ -49,7 +56,7 @@
   }
   cc(12);*/
 
-  /*function cc(arg1){
+      /*function cc(arg1){
     for(let i=1;i<arg1;i++){
         console.log(i);
     }
@@ -57,16 +64,16 @@
 }
 cc(6);*/
 
-  /*加法*/
-  /*function add(arg1,arg2){
+      /*加法*/
+      /*function add(arg1,arg2){
       arg1 =typeof arg1 ==='number'?arg1:0;
       arg2 =typeof arg2 ==='number'?arg2:0;
           return arg1+arg2;
   }
   console.log(add('hhh','gg'));*/
 
-  /*数据类型*/
-  /*function cc( arg1) {
+      /*数据类型*/
+      /*function cc( arg1) {
       arg1=[1,2,3];
       /!*if(arg1!=''&&arg1!='null'&&arg1!='undefine'){*!/
           return typeof  arg1;
@@ -74,7 +81,7 @@ cc(6);*/
   }
   console.log(cc());*/
 
-  /*
+      /*
 var a =3;
 debugger
 try{
@@ -84,8 +91,8 @@ try{
 }
 */
 
-  /*选择器*/
-  /*function _(doc){
+      /*选择器*/
+      /*function _(doc){
       if(doc){
           return document.querySelector(doc);
       }else {
@@ -93,9 +100,9 @@ try{
       }
   }*/
 
-  /*三目运算符*/
+      /*三目运算符*/
 
-  /*function sm(i,k,l){
+      /*function sm(i,k,l){
       var a,b,c;
       /!*不传值k=i i没传值默认是6 b是6*!/
       var b =k?l?l:9:i?i:6;
@@ -108,14 +115,14 @@ try{
   }
   sm();*/
 
-  /*function sc(arr,i){
+      /*function sc(arr,i){
       var len =arr.length;
       var i =i?i<0?Math.max(0,len):i:0;
       console.log(i);
   }
   sc([1,2,3],-6);*/
 
-  /*
+      /*
 
   var a= [1,2,3];
   var b =a.map(function(item,index){
@@ -123,8 +130,8 @@ try{
   });
   console.log(b);*/
 
-  /*随机数*/
-  /*
+      /*随机数*/
+      /*
   function mat(){
       var a =parseInt(Math.random()*10+1);
       console.log(a);
@@ -132,9 +139,9 @@ try{
   mat();
   */
 
-  /*each forEach map*/
-  /*map返回新对象不改变原对象*/
-  /*
+      /*each forEach map*/
+      /*map返回新对象不改变原对象*/
+      /*
   var a =[1,2,3];
   var b =a.forEach(function (item,i) {
       item+1;
@@ -142,26 +149,26 @@ try{
   console.log(a);
   console.log(b);*/
 
-  /*var a=[1,2,3];
+      /*var a=[1,2,3];
 var b =$("ul.bd > li");
 /!*each对象*!/
 b.each(function(i,item){
     console.log(i);
     console.log(item);
 });*/
-  /*
+      /*
   b.map(function(i,index){
       console.log(i);
       console.log(index);
   });*/
 
-  /*foreach 遍历数组对象*/
-  /*
+      /*foreach 遍历数组对象*/
+      /*
   a.forEach(function(i,index,item){
       console.log(i);/!*对象下标*!/
       console.log(index);/!*对应内容*!/
       console.log(item);/!*本身*!/
   });*/
-</script>
-</body>
+    </script>
+  </body>
 </html>

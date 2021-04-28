@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>点击以下按钮看不同效果</h1>
+    <a href="javascript:void(0)" class="btn alert">点击Alert</a>
+    <a href="javascript:void(0)" class="btn confirm">点击Confirm</a>
+    <script>
+      function ready(callback) {
+        // 如果 jsbridge 已经注入则直接调用
+        if (window.AlipayJSBridge) {
+          callback && callback();
+        } else {
+          // 如果没有注入则监听注入的事件
+          document.addEventListener("AlipayJSBridgeReady", callback, false);
+        }
+      }
+      ready(function () {
+        document.querySelector(".alert").addEventListener("click", function () {
+          AlipayJSBridge.call(
+            "alert",
+            {
+              title: "亲",
+              message: "你好",
+              button: "确定",
+            },
+            function (e) {
+              e && alert(JSON.stringify(e));
+            }
+          );
+        });
+        document
+          .querySelector(".confirm")
+          .addEventListener("click", function () {
+            AlipayJSBridge.call(
+              "confirm",
+              {
+                title: "亲",
+                message: "确定要退出吗？",
+                okButton: "是",
+                cancelButton: "否",
+              },
+              function (e) {
+                alert(JSON.stringify(e));
+              }
+            );
+          });
+      });
+    </script>
+  </body>
+</html>

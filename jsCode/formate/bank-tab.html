@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/cnchar/cnchar.min.js"></script>
+  </head>
+  <style>
+    #app li,
+    #app ul {
+      list-style: none;
+    }
+
+    #app li .city_item:not(:last-of-type) {
+      margin-right: 10px;
+    }
+
+    #app li .city_item {
+      cursor: pointer;
+      text-decoration: underline;
+    }
+
+    #app li .city_arrp {
+      padding-left: 25px;
+      box-sizing: border-box;
+    }
+    .cc {
+      width: 100%;
+      margin: 20px auto;
+      display: flex;
+      height: 50px;
+    }
+    .cc ul li {
+      list-style: none;
+      height: 26px;
+      line-height: 26px;
+      float: left;
+      border: 1px solid #f00;
+      color: rgb(18, 65, 65);
+      padding: 5px 10px;
+      margin: 5px 5px;
+      width: 100px;
+      text-align: center;
+      cursor: pointer;
+    }
+    .hotcontent li {
+      list-style: none;
+      height: 40px;
+      line-height: 40px;
+      float: left;
+      color: rgb(18, 65, 65);
+      padding: 5px 10px;
+      margin: 5px 30px;
+      width: 150px;
+      text-align: center;
+      cursor: pointer;
+    }
+    .hotcontent li img {
+      vertical-align: middle;
+      width: 50px;
+      height: 40px;
+    }
+    .hotcontent li span {
+      font-size: 14px;
+    }
+    .intext {
+      width: 300px;
+      height: 30px;
+      line-height: 30px;
+      font-size: 14px;
+      color: #333333;
+    }
+    .cif {
+      background: #bbb4b4;
+      position: absolute;
+      top: 36px;
+      left: 31.28%;
+      z-index: 99;
+      width: 620px;
+
+    }
+    .e-lab-1 {
+      width: 30%;
+      height: 26px;
+      text-align: right;
+      font-family: "Microsoft Yahei";
+      line-height: 26px;
+      font-size: 14px;
+      color: #000;
+      display: inline-block;
+      vertical-align: middle;
+      *display: inline;
+      zoom: 1;
+      margin-right: 10px;
+    }
+    .ulist li {
+      margin: 20px auto;
+    }
+  </style>
+  <body>
+    <div id="app">
+      <ul class="ulist">
+        <li>
+          <label class="e-lab-1"><span>收款方所在组:</span></label>
+          <input type="text" class="intext" />
+        </li>
+        <li>
+          <label class="e-lab-1"><span>收款方所在组:</span></label>
+          <input type="text" class="intext" />
+        </li>
+        <li>
+          <label class="e-lab-1"><span>收款方所在组:</span></label>
+          <input type="text" class="intext" />
+        </li>
+        <li style="position: relative">
+          <label class="e-lab-1"><span>收款方银行:</span></label>
+          <input type="text" @focus="showmask" class="intext" />
+          <div class="cif" v-show="showdiv">
+            <div class="cc">
+              <ul>
+                <li @click="hit()">热门银行</li>
+                <li @click="shit('65','70')">ABCDEF</li>
+                <li @click="shit('71','74')">GHJ</li>
+                <li @click="shit('75','78')">KLMN</li>
+                <li @click="shit('79','84')">PQRST</li>
+                <li @click="shit('85','891')">WXYZ</li>
+                <li @click="hit()">其他金融机构</li>
+              </ul>
+            </div>
+            <div style="margin-top: 50px">
+              <ul class="hotcontent" v-if="showhot">
+                <li v-for="(item, index) in hotbank" :key="item">
+                  <img :src="item.imgurl" alt="" />
+                  <span>{{item.bankName}}</span>
+                </li>
+              </ul>
+              <ul class="otcontent" v-if="!showhot">
+                <li v-for="(item, index) in city_len" :key="item">
+                  <h2>{{item}}</h2>
+                  <section class="city_arrp">
+                    <span
+                      class="city_item"
+                      v-for="(ic, inx) in citylen[item]"
+                      :key="inx"
+                      >{{ic.bankName}}</span
+                    >
+                  </section>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <script src="bank.js"></script>
+    <script>
+      new Vue({
+        el: "#app",
+        data() {
+          return {
+            // city_len: Object.keys(citylen),
+            city_len: {},
+            citylen: {},
+            showhot: true,
+            showdiv: false,
+            hotbank: [
+              {
+                bankNo: "001",
+                bankName: "工商银行",
+                imgurl:
+                  "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1972079733,4234262069&fm=26&gp=0.jpg",
+              },
+              {
+                bankNo: "002",
+                bankName: "农业银行",
+                imgurl:
+                  "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1972079733,4234262069&fm=26&gp=0.jpg",
+              },
+              {
+                bankNo: "002",
+                bankName: "农业银行",
+                imgurl:
+                  "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1972079733,4234262069&fm=26&gp=0.jpg",
+              },
+              {
+                bankNo: "002",
+                bankName: "农业银行",
+                imgurl:
+                  "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1972079733,4234262069&fm=26&gp=0.jpg",
+              },
+              {
+                bankNo: "002",
+                bankName: "农业银行",
+                imgurl:
+                  "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1972079733,4234262069&fm=26&gp=0.jpg",
+              },
+              {
+                bankNo: "002",
+                bankName: "农业银行",
+                imgurl:
+                  "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1972079733,4234262069&fm=26&gp=0.jpg",
+              },
+              {
+                bankNo: "002",
+                bankName: "农业银行",
+                imgurl:
+                  "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1972079733,4234262069&fm=26&gp=0.jpg",
+              },
+              {
+                bankNo: "002",
+                bankName: "农业银行",
+                imgurl:
+                  "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1972079733,4234262069&fm=26&gp=0.jpg",
+              },
+              {
+                bankNo: "002",
+                bankName: "农业银行",
+                imgurl:
+                  "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1972079733,4234262069&fm=26&gp=0.jpg",
+              },
+            ],
+          };
+        },
+        methods: {
+          shit(arg1, arg2) {
+            this.showhot = false;
+            this.city_len = {};
+            this.citylen = {};
+            let _A_Z_list = this.getListKey(arg1, arg2);
+            console.log(_A_Z_list);
+
+            let _city = bank.map((item) => {
+              item["_key"] = item.bankName
+                .spell()
+                .slice(0, 1)
+                .toLocaleUpperCase();
+              return item;
+            });
+            // let citylist = {}; // 按对象方式进行存储银行列表
+            for (let i = 0; i < _A_Z_list.length; i++) {
+              this.citylen[_A_Z_list[i]] = [];
+              for (let j = 0; j < _city.length; j++) {
+                if (_city[j]._key === _A_Z_list[i]) {
+                  this.citylen[_A_Z_list[i]].push(_city[j]);
+                }
+              }
+              if (!this.citylen[_A_Z_list[i]].length) {
+                delete this.citylen[_A_Z_list[i]];
+              }
+            }
+            this.city_len = Object.keys(this.citylen);
+            console.log(this.city_len);
+            console.log(this.citylen);
+          },
+          getListKey(arg1, arg2) {
+            let str = [];
+            for (let i = arg1; i <= arg2; i++) {
+              str.push(String.fromCharCode(i));
+            }
+            return str;
+          },
+          hit() {
+            this.showhot = true;
+          },
+          showmask() {
+            this.showdiv = true;
+          },
+        },
+        mounted() {
+          // this.shit('65','91');
+        },
+      });
+    </script>
+  </body>
+</html>

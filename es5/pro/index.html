@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /* 构造函数继承
+        只继承了父类构造函数的属性，没有继承父类原型的属性。
+        可以继承多个构造函数属性（call多个）。
+        在子实例中可向父实例传参。
+
+        缺点：1、只能继承父类构造函数的属性，不能继承父类原型上的属性。
+　　　　　　　2、因为不能继承父类原型链上的方法，所有要继承的函数只能定义在父类构造函数上，无法实现构造函数的复用。（每次 用每次都要重新调用）
+　　　　　　　3、每个新实例都有父类构造函数的副本，臃肿。
+        */
+      function test(name) {
+        this.name = name;
+      }
+      test.prototype.say = function () {
+        console.log("say");
+      };
+      function ks(age, name) {
+        test.call(this, name);
+        this.age = age;
+      }
+      let p2 = new test("john2");
+      let p1 = new ks("age", "john");
+      console.log(p2.say());
+      console.log(p1);
+      console.log(p1.say());
+    </script>
+  </body>
+</html>

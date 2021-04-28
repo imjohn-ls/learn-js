@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script crossorigin="anonymous" integrity="sha384-OZmxTjkv7EQo5XDMPAmIkkvywVeXw59YyYh6zq8UKfkbor13jS+5p8qMTBSA1q+F"
+            src="https://lib.baomitu.com/vue/2.6.11/vue.min.js"></script>
+</head>
+<style>
+    [v-cloak] {
+        display: none
+    }
+
+    #app li, #app ul {
+        list-style: none;
+    }
+
+    #app li .city_item:not(:last-of-type) {
+        margin-right: 10px;
+
+    }
+
+    #app li .city_item {
+        cursor: pointer;
+        text-decoration: underline;
+    }
+
+    #app li .city_arrp {
+        padding-left: 25px;
+        box-sizing: border-box;
+    }
+</style>
+<body>
+<div id="app" v-cloak>
+    <ul>
+        <li v-for="(item, index) in city_len" :key="item">
+            <h2>{{item}}</h2>
+            <section class="city_arrp">
+                <span class="city_item" v-for="(ic, inx) in _city_obj[item]" :key="inx">{{ic.name}}</span>
+            </section>
+        </li>
+    </ul>
+</div>
+<script src="city.js"></script>
+<script>
+    function getListKey() {
+        let str = [];
+        for (let i = 65; i < 91; i++) {
+            str.push(String.fromCharCode(i));
+        }
+        return str;
+    }
+
+    console.time('ctiys');
+    let getListKey = getListKey();
+    let _city = CITYS.map((item) => {
+        item['_key'] = item.pinyin.slice(0, 1).toLocaleUpperCase();
+        return item;
+    });
+    let _city_obj = {}; // 按对象方式进行存储城市列表
+    for (let i = 0; i < _A_Z_list.length; i++) {
+        _city_obj[_A_Z_list[i]] = [];
+        for (let j = 0; j < _city.length; j++) {
+            if (_city[j]._key === _A_Z_list[i]) {
+                _city_obj[_A_Z_list[i]].push(_city[j]);
+            }
+        }
+        if (!_city_obj[_A_Z_list[i]].length) {
+            delete _city_obj[_A_Z_list[i]];
+        }
+
+    }
+    console.timeEnd('ctiys');
+    new Vue({
+        el: '#app',
+        data() {
+            return {
+                city_len: Object.keys(_city_obj),
+                _city_obj
+            }
+        }
+    })
+
+</script>
+</body>
+</html>
